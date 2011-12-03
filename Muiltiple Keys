@@ -1,0 +1,50 @@
+<html>
+ <head>
+  <script type="text/javascript">
+   
+   var key = new Array
+   var undefined
+   var t
+  
+  function WhatKeyDown(e)
+   {
+   if (window.event)
+    {
+    key[e.keyCode] = 1; //For IE
+    }
+   else if (e.which) //For Netscape/Opera/Firefox
+    {
+    key[e.which] = 1;
+    }
+   }   
+   
+  function WhatKeyUp(e)
+   {
+   if (window.event)
+    {
+    key[e.keyCode] = undefined; //For IE
+    }
+   else if (e.which) //For Netscape/Opera/Firefox
+    {
+    key[e.which] = undefined;
+    }
+   }   
+   	
+  function RefreshText()
+   {
+    document.getElementById('text').innerHTML = "W = " + key[87] + "<br /> A = " + key[65] + "<br /> S = " + key[83] + "<br /> D = " + key[68]
+   
+    t = setTimeout("RefreshText.call()",10)
+   }  
+ 
+  
+   
+	
+  </script>
+ </head>
+ <body onkeydown="WhatKeyDown(event)" onkeyup="WhatKeyUp(event)" onload="RefreshText.call()">
+   
+ <p id='text'></p>
+ 
+ </body>
+</html>
